@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-5</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var obj = $('ul');
+            // 객체 추가
+            obj.append('<li><i>제주도</i></li>');       // 해당객체 다음에 (계속 뒤로)
+            obj.prepend('<li><i>서울특별시</i></li>');  // 해당객체 앞에 (계속 앞으로)
+            obj.after('<b>after1</b>');                 // 제일 마지막으로 (처음 after가 제일 마지막)
+            obj.after('<b>after2</b>');
+            obj.before('<b>before1</b>');               // 제일 처음으로 (처음 before가 제일 앞)
+            obj.before('<b>before2</b>');
+            obj.children().eq(0).children().wrap('<strong>');
+            obj.wrap('<div>');                          // 해당객체를 감싼다
+
+            obj.children().eq(1).append('<h5>일산</h5>');
+            // $('ul>li:eq(2)').append('<h5>일산</h5>');
+            obj.children().eq(1).children().eq(0).after('<h5>파주</h5>');
+            obj.children().eq(1).append('<h5>광주</h5>');
+
+            // 객체 이동
+            obj.find('ol>li').eq(0).next().appendTo('ul>li:eq(1)');
+            obj.find('ol>li:eq(1)').prependTo('ul>li:eq(5)');
+            obj.find('ol>li:eq(2)').appendTo('ul>li:eq(2)').wrap('<font color=red>');
+
+            // 객체 제거
+            $('ul>li>h5:eq(0)').remove();   // html 태그 포함 삭제
+            $('ul>li>h5:eq(0)').empty();    // 내용만 비워냄
+
+        });
+    
+    
+    </script>
+</head>
+<body>
+    <h3>5. 제이쿼리 태그 추가, 이동함수 </h3>
+
+    <section>
+        <ul>
+            <li><i>경기도</i></li>
+            <li><i>충청도</i></li>
+            <li><i>전라도</i></li>
+            <li>
+                <i>경상도</i>
+                <ol>
+                    <li>창원</li>
+                    <li>수원</li>
+                    <li>목포</li>
+                    <li>김해</li>
+                    <li>부여</li>
+                </ol>
+
+            </li>
+            <li><i>전라도</i></li>
+        </ul>
+    </section>
+
+
+
+</body>
+</html>

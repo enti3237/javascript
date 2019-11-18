@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-8</title>
+</head>
+<body>
+    <h3>8. 문서객체</h3>
+    
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+
+    <ul>
+        <li>Seoul</li>
+        <li>Deajun</li>
+        <li>Daegu</li>
+        <li>Busan</li>
+        <li>Gwangju</li>
+    </ul>
+
+</body>
+</html>
+
+<script>
+    // 위에서 순차적으로 처리되므로 이게 헤드위치에 있으면 box1 초기화되지 않아서 에러가 뜬다.
+    var box1  = document.getElementById("box1");
+    box1.style.width = "100px";
+    box1.style.height = "100px";
+    box1.style.background = "orange";
+
+    // 문서객체 생성
+    var h3 = document.createElement('h3');
+    var txt = document.createTextNode('문서객체생성');
+    h3.appendChild(txt);
+    document.body.appendChild(h3);
+
+    // 문서객체 제거
+    var li = document.getElementsByTagName('li');
+    document.body.removeChild(li[3]);
+    
+</script>

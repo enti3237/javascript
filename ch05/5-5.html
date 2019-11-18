@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-5</title>
+    <style>
+        .box{
+            position: absolute;
+            left: 10px;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var box = $('.box');
+            var draggable = false;
+
+            box.mousedown(function(){
+                draggable = true;
+            });
+            
+            $(document).mousemove(function(e){
+
+                if(draggable){
+                    box.css({
+                    'left':e.pageX,
+                    'top' :e.pageY
+                });
+            }            
+            });
+            
+            box.mouseup(function(){
+                draggable = false;
+            });
+
+        });
+    
+    </script>
+</head>
+<body>
+    <h3>5. 이벤트 연습문제</h3>
+    
+    <div class="box"></div>
+
+</body>
+</html>

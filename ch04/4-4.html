@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-4</title>
+    <style>
+        p {border: 1px solid black;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // 태그 내용 가져오기
+            var content1 = $('ul').html();  // ul 내의 내용을 html 태그까지 다 포함해서 가져온다
+            var content2 = $('ul').text();  // ul 내의 내용 만을 가져온다.
+
+            console.log(content1);
+            console.log(content2);
+
+            // 태그 내용 입력하기
+            $('p:eq(0)').html('<em>html() 함수 내용</em>')
+            $('p').eq(1).text('<em>text() 함수 내용</em>')
+
+            var div = $('.result > div');
+            div.eq(0).html($('ul').html()); // html 태그를 가져와서 html 가능한 곳에 뿌림
+            div.eq(1).html($('ul').text()); // txt만 가져와서 html 가능한 곳에 뿌림
+            div.eq(2).text($('ul').html()); // html 태그를 가져와서 텍스트만 적용되는 곳에 뿌림
+            div.eq(3).text($('ul').text()); // 텍스트만 가져와서 텍스트창에 뿌림
+
+        });
+    
+    
+    </script>
+</head>
+<body>
+    <h3>4. 제이쿼리 태그 내용함수</h3>
+    
+    <ul>
+        <li>서울</li>
+        <li>대전</li>
+        <li>대구</li>
+        <li>부산</li>
+        <li>광주</li>
+    </ul>
+
+    <p></p>
+    <p></p>
+
+    <div class="result">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+</body>
+</html> 
+

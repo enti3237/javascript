@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // 확장집합(문서객체배열)
+            var tags = $('ul>li');
+            alert(tags.length);
+
+            console.log('tags 원소 갯수 : ' + tags.length);
+
+            // eq() - 확장집합에서 인덱스번호로 객체 선택하기
+            tags.eq(1).css('color', 'red');
+
+            // first(), last() - 확장집합에서 처음과 마지막 객체 선택
+            tags.first().css('color', 'blue');
+            tags.last().css('color', 'green');
+
+            // slice(a, b)  
+            tags.slice(1,3).css('background', 'yellow')
+
+            // each() - 확정집합의 개별 객체 갯수 만큼 반복처리함수
+            tags.each(function(){
+
+                // $(this) 현재 실행 중인 대상객체
+                $(this).css('border', '1px solid black');
+
+            });
+
+            // children()
+            var tags2 = tags.eq(3).children(); 
+            tags2.css('border', '1px dotted black');
+
+            var tag = tags.eq(3).children().eq(1).children().eq(1);
+            tag.css('background', 'green');
+            
+            // next(), prev()
+            tags.first().next().next().css('list-style', 'none');
+            tags.last().prev().css('list-style', 'none');
+
+            // parent() - 부모객체 선택 
+            $('.sm').parent().parent().parent().prev().css('color', 'grey');
+
+            // find() - 확장집합 안에서 특정 객체를 찾음
+            tags.find('.sm').css('color', 'orange');
+
+        });
+    
+    </script>
+</head>
+<body>
+    <h3>1. 제이쿼리 기본선택함수</h3>
+    
+    <ul>
+        <li>서울</li>
+        <li>대전</li>
+        <li>대구</li>
+        <li>
+            <i>부산</i>
+            <ol>
+                <li>남포</li>
+                <li class="sm">서면</li>
+                <li>해운대</li>
+                <li>동래</li>
+                <li>자갈치</li>
+            </ol>
+        </li>
+        <li>광주</li>
+    </ul>
+
+
+
+    
+</body>
+</html>

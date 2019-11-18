@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4-6</title>
+    <style>
+    li { 
+
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var obj  = $('ul');
+            var btn  = $('button');
+            var count = 0;
+
+            // 추가버튼
+            btn.eq(0).click(function(){
+
+                if(count <= 0){
+                    count=1;
+                } // 빼기버튼으로 값이 마이너스 이하로 떨어졌다한들 1부터 시작함
+
+                obj.append('<li>아이템'+count+'</li>');
+//              $('ul').append('<li>아이템'+count+'</li>');
+                count++;
+            });
+
+            // 빼기버튼
+            btn.eq(1).click(function(){
+                obj.children().last().remove();
+//              $('li:last-child').remove();
+                count--;
+            });
+        });
+    
+    </script>
+
+</head>
+<body>
+    <h3>6. 실습하기</h3>
+    
+    <button>추가</button>
+    <button>빼기</button>
+
+    <ul>
+    </ul>
+
+</body>
+</html>

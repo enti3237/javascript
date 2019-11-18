@@ -95,20 +95,21 @@
         var r4 = Math.round(1.4);
         var r5 = Math.round(1.9);
 
-        document.write("r1 : " + r1 + "<br>");
-        document.write("r2 : " + r2 + "<br>");
-        document.write("r3 : " + r3 + "<br>");
-        document.write("r4 : " + r4 + "<br>");
-        document.write("r5 : " + r5 + "<br>");
+        document.write("================ <br>");
+        document.write("-5의 정수 abs : " + r1 + "<br>");
+        document.write("1.1 올림 ceil : " + r2 + "<br>");
+        document.write("1.9 내림 floor : " + r3 + "<br>");
+        document.write("1.4 반올림 round : " + r4 + "<br>");
+        document.write("1.9 반올림 round : " + r5 + "<br>");
 
         var num1 = Math.random();
         var num2 = num1 * 10;
         var num3 = Math.ceil(num2);
 
-        document.write("1부터 10사이 임의의 정수 : " + num3 + "<br>");
+        document.write("1부터 10 사이 임의의 정수 : " + num3 + "<br>");
 
         var result = Math.ceil(Math.random()*10);
-        document.write("1부터 10 사이의 임의의 정수 : " + result + "<br>")
+        document.write("1부터 10 사이 임의의 정수 : " + result + "<br>")
 
 
         // 내장객체 - String
@@ -123,12 +124,12 @@
         var s6 = str2.substring(1, 5);
 
         document.write("================ <br>");
-        document.write("s1 : " + s1 + "<br>");
-        document.write("s2 : " + s2 + "<br>");
-        document.write("s3 : " + s3 + "<br>");
-        document.write("s4 : " + s4 + "<br>");
-        document.write("s5 : " + s5 + "<br>");
-        document.write("s6 : " + s6 + "<br>");
+        document.write("charAt(x) - x번째 문자 : " + s1 + "<br>");
+        document.write("length - 문자열의 갯수 : " + s2 + "<br>");
+        document.write("indexOf(x) - x의 첫번째 위치 : " + s3 + "<br>");
+        document.write("lastIndexOf(x) - x의 마지막 첫번째 위치 : " + s4 + "<br>");
+        document.write("replace(x, y) - x를 y로 바꾸기 : " + s5 + "<br>");
+        document.write("substring(x, y) - x부터 y까지의 문자열 : " + s6 + "<br>");
 
     </script>
 

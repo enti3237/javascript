@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4-2</title>
+    <style>
+        .box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .red   {background : red;}
+        .green {background : green;}
+        .blue  {background : blue;}
+
+        /* 탭메뉴 스타일 */
+        #tab {
+            width: 400px;
+            height: 400px;
+        }
+        #tab > div {
+            width: 100%;
+            height: 40px;
+        }
+        #tab > div > button {
+            float: left;
+            width: 25%;
+            height: 100%;
+        }
+        #tab > article {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            overflow: hidden;
+        }
+        #tab > article > div {
+            position: absolute;
+            display: none;
+            left: 0;
+            height: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* 이걸로 조정한다 (중요) */
+        #tab > article > div.on {
+            display: block;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('.box1').click(function(){
+                $(this).addClass('red');        // addClass - 클릭한 순간 상단의 스타일에 적용해놓은 red가 적용된다
+            });
+            $('.box2').click(function(){
+                $(this).removeClass('green');   // removeClass - 클릭한 순간 적용되어 있던 클래스가 사라진다
+            });
+            $('.box3').click(function(){        // hasClass - 이 클래스가 적용되어있는지 확인한다 = 값을 받을 필요가 있으므로 변수 초기화하기
+                var rs = $(this).hasClass('blue');
+                if(rs){
+                    $(this).removeClass('blue');
+                }else{
+                    $(this).addClass('blue');
+                }
+            });
+            $('.box4').click(function(){        // toggleClass - 클릭할 때마다 클래스가 적용됐다 빠졌다 한다
+                $(this).toggleClass('blue');
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+        var btn = $('button');
+        var div = $('article>div');
+
+        btn.click(function(){
+            var i = $(this).index();
+            // this는 버튼 4개 중 하나를 클릭할 때의 값을 말하므로 .index 명령으로 인덱스값 i를 빼낸다 
+            div.removeClass().eq(i).addClass('on');
+            // div의 클래스 전부를 한번에 지우고 버튼과 div의 인덱스값은 동일하므로 같은 인덱스값을 넣고 클래스를 추가한다. 
+        });
+    });
+    </script>
+
+<!-- 
+    <script>
+        $(document).ready(function(){
+
+            $('button:eq(0)').click(function(){
+                var rs = $('article>div:eq(0)').hasClass('on');
+                if(!rs){
+                    $('article>div').removeClass('on');
+                    $('article>div:eq(0)').addClass('on');
+                }else{}
+            });
+
+            $('button:eq(1)').click(function(){
+                var rs = $('article>div:eq(1)').hasClass('on');
+                if(!rs){
+                    $('article>div').removeClass('on');
+                    $('article>div:eq(1)').addClass('on');
+                }else{}
+            });
+
+            $('button:eq(2)').click(function(){
+                var rs = $('article>div:eq(2)').hasClass('on');
+                if(!rs){
+                    $('article>div').removeClass('on');
+                    $('article>div:eq(2)').addClass('on');
+                }else{}
+            });
+
+            $('button:eq(3)').click(function(){
+                var rs = $('article>div:eq(3)').hasClass('on');
+                if(!rs){
+                    $('article>div').removeClass('on');
+                    $('article>div:eq(3)').addClass('on');
+                }else{}
+            });
+
+        });
+    
+    </script> -->
+
+</head>
+
+<body>
+    <h3>2. 제이쿼리 클래스 함수</h3>
+    
+    <div class="box box1">box1</div>
+    <div class="box box2 green">box2</div>
+    <div class="box box3 green">box3</div>
+    <div class="box box4">box4</div>
+
+    <h4>탭메뉴</h4>
+
+    <section id="tab">
+        <div>
+            <button>애국가 1절</button>
+            <button>애국가 2절</button>
+            <button>애국가 3절</button>
+            <button>애국가 4절</button>
+        </div>
+
+        <article>
+            <div class="on">
+                <p>
+                    동해물과 백두산이 마르고 닳도록<br>
+                    하느님이 보우하사 우리나라 만세<br>
+                    무궁화 삼천리 화려강산<br>
+                    대한사람 대한으로 길이 보전하세
+                </p>
+            </div>
+            <div>
+                <p>
+                    남산 위의 저 소나무 철벽을 두른듯<br>
+                    바람서리 불변함은 우리 기상일세.<br>
+                    무궁화 삼천리 화려강산<br>
+                    대한사람 대한으로 길이 보전하세
+                </p>
+            </div>
+            <div>
+                <p>
+                    가을 하늘 공활한데 높고 구름 없이<br>
+                    밝은 달은 우리 가슴 일편단심일세.<br>
+                    무궁화 삼천리 화려강산<br>
+                    대한사람 대한으로 길이 보전하세
+                </p>
+            </div>
+            <div>
+                <p>
+                    이 기상과 이 맘으로 충성을 다하여<br>
+                    괴로우나 즐거우나 나라 사랑하세.<br>
+                    무궁화 삼천리 화려강산<br>
+                    대한사람 대한으로 길이 보전하세
+                </p>
+            </div>
+        </article>
+
+
+
+    </section>
+
+
+
+
+</body>
+</html>

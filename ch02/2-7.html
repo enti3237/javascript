@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-7</title>
+</head>
+<body>
+    <h3>7. 배열</h3>
+    <script>
+        // 배열 생성 (둘 다 쓴다. arr2[] 같은 거 안 함 - 전반적으로 자바보다 느슨한 편이군)
+        var arr1 = new Array(1, 2, 3, 4, 5);
+        var arr2 = ["김유신","김유진","김유민","김유정","김유민"];
+        
+        // 배열 원소갯수
+        document.write("arr1 원소 갯수 : " + arr1.length + "<br>");
+        document.write("arr2 원소 갯수 : " + arr2.length + "<br>");
+
+        // 배열 원소 출력
+
+        for(var i=0 ; i<arr1.length; i++) {
+            document.write("arr1 " + (i+1) + "번째 원소 : " + arr1[i] + "<br>");
+        }
+
+        // 배열 반복문 - 아니 왜 연산이 안돼 - 변환해야함
+        for(var n in arr2){
+            document.write("arr2 " + (parseInt(n)+1) + "번째 원소 : " + arr2[n] + "<br>");
+        }
+
+        // 2차원 배열
+        var arr2d = [[1,2,3], [4,5,6], [7,8,9]]; 
+    
+        for (var i = 0 ; i < 3 ; i++) {
+            for (var j = 0 ; j < 3 ; j++) {
+                document.write(arr2d[i][j] + " ");
+            }
+        }
+    </script>
+
+</body>
+</html>

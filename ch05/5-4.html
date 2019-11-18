@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <style>
+    html {
+        width: 100%;
+        height: 3000px;
+        border: 1px solid red;
+        box-sizing: border-box;
+    }
+    .s {position: fixed}
+    button {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+    }
+    </style>
+    <script>
+        $(document).ready(function(){
+
+            // $(window).on('resize', function(){});
+            // 리사이즈 이벤트
+            $(window).resize(function(){
+                console.log("resize!!!");
+                var w = $(this).width();
+                var h = $(this).height();
+
+                $('.w > span').text(w);
+                $('.h > span').text(h);
+            });
+
+            // 스크롤 이벤트 (스크롤바의 크기는 전체 윈도우 높이와 현재 창 높이의 비례와 같다)
+            $(window).scroll(function(){
+
+                var t = $(this).scrollTop();
+                $('.s > span').text(t);
+            });
+
+            // 버튼-윈도우 이벤트
+            $('button').click(function(){
+                $(window).scrollTop(0);
+            });
+
+        });
+    </script>       
+
+    <title>5-4</title>
+</head>
+<body>
+    <h3>4. 윈도우(브라우저) 이벤트</h3>
+    
+    <h4 class="w">가로 : <span>0</span></h4>
+    <h4 class="h">세로 : <span>0</span></h4>
+    <h4 class="s">스크롤바 위치 : <span>0</span></h4>
+
+    <button>위로 이동</button>
+</body>
+</html>

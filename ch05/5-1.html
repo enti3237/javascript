@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-1</title>
+    <style>
+        .box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            // $('.box1').click(function(){}); 
+            // 간단히 해서 이건데 on을 쓰면 복합처리 가능
+            $('.box1').on('click', function(){
+                $(this).css('background', 'red');
+            });
+
+            $('.box2').on({
+                'mouseover' : function(){
+                    $(this).css('background', 'orange');
+                },
+                'mouseout' : function(){
+                    $(this).css('background', 'green');
+                }
+            });
+
+            $('.box3').on({
+                'mousedown' : function(){
+                    $(this).css('background', 'red');
+                },
+                'mouseup' : function(){
+                    $(this).css('background', 'yellow');
+                },
+                'mousemove' : function(){
+                    console.log('mousemove!!!');
+                }
+            });
+
+        });
+    
+    </script>
+</head>
+<body>
+    <h3>1. 제이쿼리 이벤트 함수</h3>
+    
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+
+
+</body>
+</html>
