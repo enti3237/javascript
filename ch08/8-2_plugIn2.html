@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8-2 비공식 플러그인</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+ 
+    <style>
+        img {
+            height:300px;
+        }
+        .slide {
+            width: 300px;
+            overflow: hidden;
+        }
+        span {
+            border: 1px dotted red;
+
+        }
+        .bx-wrapper {
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          border: 0;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#bxslider').bxSlider({
+                auto : true,
+                pager: false,
+                controls : false,
+                slideWidth: 300,
+                minSlides: 1,
+                maxSlides: 3,
+                slideMargin : 5,
+                pause: '3000'
+            });
+            
+        });
+
+    </script>
+</head>
+<body>
+    <h3>2. bxslider 플러그인</h3>
+    
+    <div id="bxslider" class="bxslider1">
+        <div class="slide">
+            <img src="img/cat1.jpg">
+            <p>고양이 한마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat2.jpg">
+            <p>고양이 두마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat3.jpg">
+            <p>고양이 세마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat4.jpg">
+            <p>고양이 네마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat5.jpg">
+            <p>고양이 다섯마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat6.jpg">
+            <p>고양이 여섯마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat7.jpg">
+            <p>고양이 일곱마리</p>
+        </div>
+        <div class="slide">
+            <img src="img/cat8.jpg">
+            <p>고양이 여덟마리</p>
+        </div>
+    </div>
+
+</body>
+</html>

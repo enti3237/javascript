@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7-1</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+
+            var td1 = $('#t1 tr>td:nth-child(2)');
+
+            $('#btn1').click(function(){
+
+                $.ajax({
+                    url: 'http://localhost:8080/ch14/14-7.jsp',
+                    type: 'get',
+                    dateType: 'json',
+                    success: function(data){
+                        
+                        td1.eq(0).text(data.k1);
+                        td1.eq(1).text(data.k2);
+                        td1.eq(2).text(data.k3);
+                        td1.eq(3).text(data.k4);
+                        td1.eq(4).text(data.k5);
+
+                    }
+                });
+            });
+
+            // table - tr 은 부모자식관계가 아니므로 table>tr을 쓰지 않는다
+            var td2 = $('#t2 tr > td:nth-child(2)');
+
+            $('#btn2').click(function(){
+
+                $.ajax({
+                    url: 'http://chhak.kr/ajax/data/data1.json',
+                    type: 'get',
+                    dateType: 'json',
+                    success: function(data){
+                        
+                        td2.eq(0).text(data.name);
+                        td2.eq(1).text(data.price);
+                        td2.eq(2).text(data.date);
+                        td2.eq(3).text(data.origin);
+
+                    }
+                });
+            });
+
+            // 과일 데이터 배열 출력하기
+            var t3 = $('#t3');
+            var tr3 = $('#t3 tr');
+
+            $('#btn3').click(function(){
+
+                $.ajax({
+                    url: 'http://localhost:8080/ch14/14-8.jsp',
+                    type: 'get',
+                    dateType: 'json',
+                    success: function(data){
+
+                        // 3개짜리 배열을 가진 3개의 배열을 가져온다
+                        var fruit = data.fruit;
+
+                        for(var i=0 ; i<fruit.length; i++){
+                            var obj = fruit[i];
+
+                        // tr3의 제일 처음 목차(eq(0))를 넘기고 그 다음 tr부터의 자식인 td의 첫번째 행에 name을 
+                        tr3.eq(i+1).children().eq(0).text(obj.name);
+                        tr3.eq(i+1).children().eq(1).text(obj.price);
+                        tr3.eq(i+1).children().eq(2).text(obj.origin);
+                        }
+                    }
+                });
+
+
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h3>1. 제이쿼리 통신(AJAX)</h3>
+    
+    <table id="t1" border="1">
+        <tr>
+            <td>k1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>k2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>k3</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>k4</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>k5</td>
+            <td></td>
+        </tr>
+
+
+    </table>
+
+    <button id="btn1">데이터 불러오기</button>
+
+    <hr>
+    
+    <table id="t2" border="1">
+        <tr>
+            <td>name</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>price</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>date</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>origin</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <button id="btn2">데이터 불러오기</button>
+
+    <hr>
+
+    <table id="t3" border="1">
+        <tr>
+            <td>name</td>
+            <td>price</td>
+            <td>origin</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <button id="btn3">데이터 불러오기</button>
+
+</body>
+</html>

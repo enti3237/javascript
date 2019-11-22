@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7-2</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(Document).ready(function(){
+
+            var table = $('.list');
+                
+            // .ajax의 type:'get'을 의미함
+            $.get('http://localhost:8080/ch14/14-9.jsp', function(data){
+                
+                for(var i=0 ; i<data.length ; i++) {
+                    table.append('<tr></tr>');
+                    table.find('tr').eq(i+1).append("<td>" + data[i].uid + "</td>");
+                    table.find('tr').eq(i+1).append("<td>" + data[i].name + "</td>");
+                    table.find('tr').eq(i+1).append("<td>" + data[i].hp + "</td>");
+                    table.find('tr').eq(i+1).append("<td>" + data[i].pos + "</td>");
+                    table.find('tr').eq(i+1).append("<td>" + data[i].dep + "</td>");
+                    table.find('tr').eq(i+1).append("<td>" + data[i].rdate.substring(2,10) + "</td>");
+                    table.find('tr').eq(i+1).append("<td><a href='http://localhost:8080/ch14/14-11.jsp?uid="+data[i].uid+"'>삭제</a></td>");
+                    }
+                });
+
+            // 삭제하기
+            // 이하로 설정할 경우 .list a 는 body 안에 없는 동적태그라 지정되지 않는다
+            // $('.list a').click(function(e)
+
+            $(document).on('click', '.list a', function(e){
+                e.preventDefault();                 // return false 와 동일
+
+                var tag = $(this);
+                var url = tag.attr('href');         // a 태그의 속성인 href를 빼낸다
+
+                $.get(url, function(data){
+                    tag.parent().parent().remove(); // 클릭한 a태그(this)의 부모(td)의 부모(tr)를 지운다
+                });
+            });
+
+            // 추가등록
+            $('input[type=submit]').click(function(){
+                var uid   = $('input[name=uid]').val();
+                var name  = $('input[name=name]').val();
+                var hp    = $('input[name=hp]').val();
+                var pos   = $('select[name=pos]').val();
+                var dep   = $('select[name=dep]').val();
+                var rdate = $('input[name=rdate]').val();
+
+                var data = {"uid":uid, "name":name, "hp":hp, "pos":pos, "dep":dep, "rdate":rdate};
+
+                $.post('http://localhost:8080/ch14/14-10.jsp', data, function(data){
+
+                    table.append('<tr><td>'+ uid +'</td><td>'+ name +'</td><td>'+ hp +'</td><td>'+ pos +'</td><td>'+ dep +'</td><td>'+ rdate.substring(2,10) +'</td><td><a href="http://localhost:8080/ch14/14-11.jsp?uid="+uid>삭제</a></td></tr>');
+
+                });
+             });
+         });
+    </script>
+
+</head>
+<body>
+    <h3>2. 동적 태그 생성 및 데이터 출력</h3>
+    
+    <h4>직원목록</h4>
+    <table class="list" border="1">
+        <tr>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>휴대폰</th>
+            <th>직급</th>
+            <th>부서</th>
+            <th>입사일</th>
+            <th>설정</th>
+        </tr>
+    </table>
+
+    <h4>직원등록</h4>
+    <table class="register" border="1">
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" name="uid"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>휴대폰</td>
+            <td><input type="text" name="hp"></td>
+        </tr>
+        <tr>
+            <td>직급</td>
+            <td>
+                <select name="pos">
+                    <option>사원</option>
+                    <option>대리</option>
+                    <option>과장</option>
+                    <option>차장</option>
+                    <option>부장</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>부서</td>
+            <td>
+                <select name="dep">
+                    <option value="101">영업1부</option>
+                    <option value="102">영업2부</option>
+                    <option value="103">영업3부</option>
+                    <option value="104">영업4부</option>
+                    <option value="105">영업지원부</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>입사일</td>
+            <td><input type="date" name="rdate"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right"><input type="submit" value="등록완료">
+        </tr>
+    </table>
+
+</body>
+</html>
